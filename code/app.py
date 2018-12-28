@@ -33,14 +33,14 @@ def insert_record():
 
 
 # GET /records_by_date
-@app.route('/records_by_date/<string:query_date>')
-def get_store(query_date):
+@app.route('/records_by_date/<string:start_date>/<string:end_date>')
+def get_store(start_date,end_date):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
 
-    select_query = "SELECT * FROM records where Date>?"
+    select_query = "SELECT * FROM records where Date>=? AND Date <=?"
     result =[]
-    for row in cursor.execute(select_query,(query_date,)):
+    for row in cursor.execute(select_query,(start_date,end_date)):
         single_dict= {}
 
         for index, value in enumerate(row,0):

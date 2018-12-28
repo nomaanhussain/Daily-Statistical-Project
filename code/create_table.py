@@ -8,7 +8,7 @@ cursor = connection.cursor()
 # cursor.execute(create_table)
 
 
-create_table = """CREATE TABLE IF NOT EXISTS records (Date date, Inquiry_Call_In int, Inquiry_Walk_In int, Inquiry_Web int,
+create_table = """CREATE TABLE IF NOT EXISTS records (Date date PRIMARY KEY, Inquiry_Call_In int, Inquiry_Walk_In int, Inquiry_Web int,
  Inquiry_Referral int, Inquiry_Other int, Total_Inquiries_Warm_Leads int, Appointments_Set int, Intro_1 int,
  Intro_1_Attended_Showed int, Intro_2 int, Intro_2_Attended_Showed int, Enrollment_Conferences int, 
  Renewal_Upgrade_Conferences int, no_of_Cancellations int, Dragon int, Basic int, Mastery int, Adults int, 
@@ -18,23 +18,27 @@ create_table = """CREATE TABLE IF NOT EXISTS records (Date date, Inquiry_Call_In
  Monthly_Payment_Increase real, Cancellation_Fee_Collected real, Reduction_in_Monthly_Payment real)"""
 cursor.execute(create_table)
 
-d = "25-06-2003"
+# d = "25-06-2003"
 
-record = (d, 1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1,1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1)
+# record = (d, 1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1,1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1)
 
-insert_query = "INSERT INTO records VALUES (?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?)"
+# insert_query = "INSERT INTO records VALUES (?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?)"
 
-cursor.execute(insert_query , record)
+# cursor.execute(insert_query , record)
 
-select_query = "SELECT * FROM records"
+# d = "28-06-2003"
+# record = (d, 1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1, 1 , 1,1,1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1)
+# cursor.execute(insert_query , record)
 
-for row in cursor.execute(select_query):
-    print(row)
+# select_query = "SELECT * FROM records"
 
-select_query = "SELECT * FROM records where Date>?"
+# for row in cursor.execute(select_query):
+#     print(row)
 
-for row in cursor.execute(select_query,("26-06-2003",)):
-    print(row)
+# select_query = "SELECT * FROM records where Date>=? AND Date <=? "
+
+# for row in cursor.execute(select_query,("25-06-2003","27-06-2003")):
+#     print(row)
 
 connection.commit()
 
